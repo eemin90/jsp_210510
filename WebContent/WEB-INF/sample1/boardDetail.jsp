@@ -33,7 +33,7 @@
 	<div class="row justify-content-center">
 		<div class="col-8">
 			<h1>글 보기</h1>
-				<form action="${pageContext.request.contextPath}/sample1/modify?${param.index}" method="post" id="form1">
+			<form action="${pageContext.request.contextPath}/sample1/modify?${param.index}" method="post" id="form1">
 				<div class="form-group">
 					<label for="input1">작성자</label>
 					<input value="${board.writer}" type="text" name="writer" class="form-control" id="input1" readonly />
@@ -49,6 +49,10 @@
 				<input type="text" value="${param.index}" name="index" hidden />
 				<button type="button" id="button1" class="btn btn-secondary">수정</button>
 				<input type="submit" id="submit1" class="btn btn-primary" value="전송" hidden />
+			</form>
+			<form action="${pageContext.request.contextPath}/sample1/delete?${param.index}" method="post" id=form2>
+				<input type="text" value="${param.index}" name="index" hidden />
+				<input type="submit" class="btn btn-danger" value="삭제" />
 			</form>
 		</div>
 	</div>

@@ -4,6 +4,7 @@ public class Board {
 	private String title;
 	private String body;
 	private String writer;
+	private String password;
 
 	public String getTitle() {
 		return title;
@@ -27,5 +28,13 @@ public class Board {
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

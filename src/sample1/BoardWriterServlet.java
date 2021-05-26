@@ -53,11 +53,13 @@ public class BoardWriterServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String body = request.getParameter("body");
 		String writer = request.getParameter("writer");
+		String password = request.getParameter("password");
 		
 		Board board = new Board();
 		board.setTitle(title);
 		board.setBody(body);
 		board.setWriter(writer);
+		board.setPassword(password);
 		
 		list.add(board);
 		

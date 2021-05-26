@@ -30,8 +30,12 @@
 				<input type="text" name="writer" class="form-control" id="input1" />
 			</div>
 			<div class="form-group">
-				<label for="input2">제목</label>
-				<input type="text" name="title" class="form-control" id="input2" />
+				<label for="input2">암호</label>
+				<input type="text" name="password" class="form-control" id="input2" />
+			</div>
+			<div class="form-group">
+				<label for="input3">제목</label>
+				<input type="text" name="title" class="form-control" id="input3" />
 			</div>
 			<div class="form-group">
 				<label for="textarea1">본문</label>

@@ -10,4 +10,4 @@ SELECT COUNT(DISTINCT City) FROM Customers;
 
 SELECT DISTINCT Country FROM Customers;
 
-SELECT DISTINCT City, Country FROM Customers; -- DISTINCT는 City만
+SELECT DISTINCT City, Country FROM Customers;

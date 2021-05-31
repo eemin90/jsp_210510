@@ -16,3 +16,5 @@ SELECT DISTINCT City FROM Customers ORDER BY City;
 
 SELECT EmployeeID, LastName, FirstName FROM Employees
 WHERE EmployeeID = 1;
+
+SELECT EmployeeID, LastName, FirstName, Notes FROM Employees;

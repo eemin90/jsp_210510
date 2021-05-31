@@ -1,6 +1,6 @@
 package ch14.bean;
 
-public class Imployee {
+public class Employee {
 	private int eid;
 	private String lastName;
 	private String firstName;

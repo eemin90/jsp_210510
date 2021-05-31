@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ch14.bean.Imployee;
+import ch14.bean.Employee;
 
 /**
  * Servlet implementation class JDBC11Servlet
@@ -36,17 +36,17 @@ public class JDBC11Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String eid = request.getParameter("eid");
 		
-		Imployee imployee = executeJDBC(eid);
+		Employee employee = executeJDBC(eid);
 		
-		request.setAttribute("emp", imployee);
+		request.setAttribute("emp", employee);
 		
 		String path = "/ch14/jdbc11.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 	
-	private Imployee executeJDBC(String id) {
+	private Employee executeJDBC(String id) {
 		
-		Imployee imployee = null;
+		Employee employee = null;
 		
 		String sql = "SELECT EmployeeID, LastName, FirstName FROM Employees WHERE EmployeeID = " + id;
 		
@@ -77,10 +77,10 @@ public class JDBC11Servlet extends HttpServlet {
 				String lastName = rs.getString(2);
 				String firstName = rs.getString(3);
 				
-				imployee = new Imployee();
-				imployee.setEid(eid);
-				imployee.setLastName(lastName);
-				imployee.setFirstName(firstName);
+				employee = new Employee();
+				employee.setEid(eid);
+				employee.setLastName(lastName);
+				employee.setFirstName(firstName);
 			}
 			
 		} catch (Exception e) {
@@ -112,7 +112,7 @@ public class JDBC11Servlet extends HttpServlet {
 			}
 		}
 		
-		return imployee;
+		return employee;
 	}
 
 	/**

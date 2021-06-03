@@ -10,6 +10,29 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp"%>
 
 <title>signup</title>
+
+<script>
+	var url = "${pageContext.request.contextPath}" + "/sample2/checkdup";
+
+	$(document).ready(function() {
+		$("#button1").click(function() {
+			var id = $("#input1").val();
+			
+			$.post(url, {id: id}, function(data) {
+				if (data == 'ok') {
+					// 가입 가능 메세지
+					console.log("ok");
+					$("#span1").text("사용 가능");
+				} else {
+					// 가입 불가능 메세지
+					console.log("not ok");
+					$("#span1").text("사용 불가능");
+				}
+			});
+		});
+	});
+</script>
+
 </head>
 <body>
 <s2:navbar />
@@ -17,7 +40,8 @@
 
 	<form action="${pageContext.request.contextPath}/sample2/signup" method="post">
 		id : <br>
-		<input type="text" name="id" class="form-control" /> <br>
+		<input type="text" name="id" id="input1" class="form-control" /> <button type="button" id="button1">중복확인</button>
+		<span id="span1"></span> <br>
 		pw : <br>
 		<input type="text" name="password" class="form-control" /> <br>
 		name : <br>
@@ -26,6 +50,13 @@
 		<input type="date" name="birth" class="form-control" /> <br>
 		<input type="submit" value="가입" class="form-control" />
 	</form>
+	
+	<c:if test="${not empty message}">
+		<br>
+		<div class="alert alert-danger" role="alert">
+			${message}
+		</div>
+	</c:if>
 </div>
 </body>
 </html>

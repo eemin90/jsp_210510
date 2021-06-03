@@ -155,5 +155,73 @@ public class MemberDao {
 		
 		return null;
 	}
+
+	public boolean update(Member member) {
+		String sql = "UPDATE Member "
+				+ "SET password = ?, "
+				+ "    name = ?, "
+				+ "    birth = ? "
+				+ "WHERE id = ?";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 연결
+			con = DriverManager.getConnection(url, user, password);
+			
+			// prepareStatement 생성
+			pstmt = con.prepareStatement(sql);
+			
+			// ?(파라미터)에 값 할당
+			pstmt.setString(1, member.getPassword());
+			pstmt.setString(2, member.getName());
+			pstmt.setDate(3, member.getBirth());
+			pstmt.setString(4, member.getId());
+			
+			// 쿼리 실행
+			int cnt = pstmt.executeUpdate();
+			
+			if (cnt == 1) {
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return false;
+	}
+
+	public void remove(String id) {
+		String sql = "DELETE FROM Member WHERE id = ?";
+		
+		try (
+			Connection con = DriverManager.getConnection(url, user, password);
+			PreparedStatement pstmt = con.prepareStatement(sql);
+				) {
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

@@ -60,7 +60,7 @@ public class Sample2SignUpServlet extends HttpServlet {
 		
 		// forward or redirect
 		if (ok) {
-			String path = request.getContextPath() + "/sample2/member/main";
+			String path = request.getContextPath() + "/sample2/main";
 			response.sendRedirect(path);
 		} else {
 			request.setAttribute("message", "가입 실패");

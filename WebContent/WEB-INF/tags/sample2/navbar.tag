@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div>
-	<a href="<%= request.getContextPath() %>/sample2/member/main">메인</a>
+	<a href="<%= request.getContextPath() %>/sample2/main">메인</a>
 	|
 	<a href="<%= request.getContextPath() %>/sample2/member/signup">회원가입</a>
 	|

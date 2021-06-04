@@ -22,7 +22,7 @@
 			<h1>환영합니다. ${userLogined.id}님</h1>
 		</c:when>
 	</c:choose>
-	<a href="<%= request.getContextPath() %>/sample2/signup">회원가입</a>
+	<a href="<%= request.getContextPath() %>/sample2/member/signup">회원가입</a>
 </div>
 </body>
 </html>

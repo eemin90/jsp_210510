@@ -38,7 +38,7 @@
 <s2:navbar />
 <div class="container">
 
-	<form id="form1" action="${pageContext.request.contextPath}/sample2/modify" method="post">
+	<form id="form1" action="${pageContext.request.contextPath}/sample2/member/modify" method="post">
 		id : <br>
 		<input type="text" id="input1" name="id" value="${member.id}" class="form-control" readonly /> <br>
 		pw : <br>
@@ -60,7 +60,7 @@
 </div>
 
 <div class="container">
-	<form id="form2" action="${pageContext.request.contextPath}/sample2/remove" method="post">
+	<form id="form2" action="${pageContext.request.contextPath}/sample2/member/remove" method="post">
 		<input type="submit" id="submit2" value="탈퇴" />
 	</form>
 </div>

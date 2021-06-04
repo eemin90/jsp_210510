@@ -12,7 +12,7 @@
 <title>signup</title>
 
 <script>
-	var url = "${pageContext.request.contextPath}" + "/sample2/checkdup";
+	var url = "${pageContext.request.contextPath}" + "/sample2/member/checkdup";
 
 	$(document).ready(function() {
 		$("#button1").click(function() {
@@ -38,7 +38,7 @@
 <s2:navbar />
 <div class="container">
 
-	<form action="${pageContext.request.contextPath}/sample2/signup" method="post">
+	<form action="${pageContext.request.contextPath}/sample2/member/signup" method="post">
 		id : <br>
 		<input type="text" name="id" id="input1" class="form-control" /> <button type="button" id="button1">중복확인</button>
 		<span id="span1"></span> <br>

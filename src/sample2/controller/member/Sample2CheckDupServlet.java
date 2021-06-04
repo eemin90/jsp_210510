@@ -1,7 +1,6 @@
-package sample2.controller;
+package sample2.controller.member;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sample2.bean.Member;
 import sample2.dao.MemberDao;
 
 /**
- * Servlet implementation class Sample2ListServlet
+ * Servlet implementation class Sample2CheckDupServlet
  */
-@WebServlet("/sample2/list")
-public class Sample2ListServlet extends HttpServlet {
+@WebServlet("/sample2/member/checkdup")
+public class Sample2CheckDupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Sample2ListServlet() {
+    public Sample2CheckDupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,25 +29,26 @@ public class Sample2ListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MemberDao dao = new MemberDao();
-		
-		// DB에서 회원 list 얻어서
-		List<Member> list = dao.list();
-		
-		// request attribute에 붙여서
-		request.setAttribute("members", list);
-		
-		// list.jsp로 forward
-		String path = "/WEB-INF/sample2/list.jsp";
-		request.getRequestDispatcher(path).forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String id = request.getParameter("id");
+		
+		MemberDao dao = new MemberDao();
+		
+		response.setContentType("text/plain; charset=utf-8");
+
+		if (dao.existsId(id)) {
+			response.getWriter().append("not ok");
+		} else {
+			response.getWriter().append("ok");
+		}
+		
 	}
 
 }

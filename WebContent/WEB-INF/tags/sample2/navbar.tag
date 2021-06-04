@@ -3,20 +3,20 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div>
-	<a href="<%= request.getContextPath() %>/sample2/main">메인</a>
+	<a href="<%= request.getContextPath() %>/sample2/member/main">메인</a>
 	|
-	<a href="<%= request.getContextPath() %>/sample2/signup">회원가입</a>
+	<a href="<%= request.getContextPath() %>/sample2/member/signup">회원가입</a>
 	|
 	<c:if test="${empty sessionScope.userLogined}">
-		<a href="<%= request.getContextPath() %>/sample2/login">로그인</a>
+		<a href="<%= request.getContextPath() %>/sample2/member/login">로그인</a>
 		|
 	</c:if>
 	
 	<c:if test="${not empty sessionScope.userLogined}">
-		<a href="<%= request.getContextPath() %>/sample2/logout">로그아웃</a>
+		<a href="<%= request.getContextPath() %>/sample2/member/logout">로그아웃</a>
 		|
-		<a href="<%= request.getContextPath() %>/sample2/info">정보보기</a>
+		<a href="<%= request.getContextPath() %>/sample2/member/info">정보보기</a>
 		|
 	</c:if>
-	<a href="<%= request.getContextPath() %>/sample2/list">목록보기</a>
+	<a href="<%= request.getContextPath() %>/sample2/member/list">목록보기</a>
 </div>

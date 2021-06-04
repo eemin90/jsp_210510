@@ -40,7 +40,7 @@
 
 	<form action="${pageContext.request.contextPath}/sample2/member/signup" method="post">
 		id : <br>
-		<input type="text" name="id" id="input1" class="form-control" /> <button type="button" id="button1">중복확인</button>
+		<input type="text" name="id" id="input1" class="form-control" /> <button type="button" id="button1" >중복확인</button>
 		<span id="span1"></span> <br>
 		pw : <br>
 		<input type="text" name="password" class="form-control" /> <br>

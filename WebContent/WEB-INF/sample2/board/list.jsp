@@ -14,27 +14,27 @@
 <body>
 <s2:navbar />
 <div class="container">
-	<h1>회원 목록</h1>
+	<h1>글 목록</h1>
 	<table class="table table-bordered table-sm">
 		<thead class="thead-light">
 			<tr>
-				<th>#</th>
-				<th>ID</th>
-				<th>PW</th>
-				<th>NAME</th>
-				<th>BIRTH</th>
-				<th>INSERTED</th>
+				<th>id</th>
+				<th>title</th>
+				<th>memberId</th>
+				<th>inserted</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${members}" var="member" varStatus="status">
+			<c:forEach items="${boards}" var="board" varStatus="status">
 				<tr>
-					<td>${status.count}</td>
-					<td>${member.id}</td>
-					<td>${member.password}</td>
-					<td>${member.name}</td>
-					<td>${member.birth}</td>
-					<td>${member.inserted}</td>
+					<td>${board.id}</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/sample2/board/detail?id=${board.id}">
+							${board.title}
+						</a>
+					</td>
+					<td>${board.memberIdHidden}</td>
+					<td>${board.timeAgo}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

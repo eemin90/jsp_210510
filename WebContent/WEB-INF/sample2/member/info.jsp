@@ -37,7 +37,7 @@
 <body>
 <s2:navbar />
 <div class="container">
-
+	<h1>회원 정보</h1>
 	<form id="form1" action="${pageContext.request.contextPath}/sample2/member/modify" method="post">
 		id : <br>
 		<input type="text" id="input1" name="id" value="${member.id}" class="form-control" readonly /> <br>

@@ -37,7 +37,7 @@
 <body>
 <s2:navbar />
 <div class="container">
-
+	<h1>회원 가입</h1>
 	<form action="${pageContext.request.contextPath}/sample2/member/signup" method="post">
 		id : <br>
 		<input type="text" name="id" id="input1" class="form-control" /> <button type="button" id="button1" >중복확인</button>

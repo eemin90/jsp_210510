@@ -17,6 +17,10 @@
 		|
 		<a href="<%= request.getContextPath() %>/sample2/member/info">정보보기</a>
 		|
-	</c:if>
-	<a href="<%= request.getContextPath() %>/sample2/member/list">목록보기</a>
+		<a href="<%= request.getContextPath() %>/sample2/board/write">글쓰기</a>
+		|
+		<a href="<%= request.getContextPath() %>/sample2/member/list">회원 목록보기</a>
+		|
+	</c:if>	
+	<a href="<%= request.getContextPath() %>/sample2/board/list">글 목록보기</a>
 </div>

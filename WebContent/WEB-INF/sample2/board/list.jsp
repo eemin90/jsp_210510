@@ -20,20 +20,20 @@
 			<tr>
 				<th>id</th>
 				<th>title</th>
-				<th>memberId</th>
+				<th>memberName</th>
 				<th>inserted</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${boards}" var="board" varStatus="status">
+			<c:forEach items="${boards}" var="board">
 				<tr>
-					<td>${board.id}</td>
+					<td>${board.boardId}</td>
 					<td>
-						<a href="${pageContext.request.contextPath}/sample2/board/detail?id=${board.id}">
+						<a href="${pageContext.request.contextPath}/sample2/board/detail?id=${board.boardId}">
 							${board.title}
 						</a>
 					</td>
-					<td>${board.memberIdHidden}</td>
+					<td>${board.memberName}</td>
 					<td>${board.timeAgo}</td>
 				</tr>
 			</c:forEach>

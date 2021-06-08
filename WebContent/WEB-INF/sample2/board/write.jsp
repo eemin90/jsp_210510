@@ -17,7 +17,7 @@
 	<h1>글 작성</h1>
 	<form action="${pageContext.request.contextPath}/sample2/board/write" method="post">
 		제목 : <br>
-		<input type="text" name="title" id="input" /> <br>
+		<input type="text" name="title" id="input" required /> <br>
 		본문 : <br>
 		<textarea name="body" id="textarea1"></textarea> <br>
 		<input type="submit" value="작성" />

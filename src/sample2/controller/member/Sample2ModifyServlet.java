@@ -59,15 +59,16 @@ public class Sample2ModifyServlet extends HttpServlet {
 		
 		if (ok) {
 			message = "변경 완료";
+			request.setAttribute("modifyMsg", message);
 		} else {
 			message = "변경 실패";
+			request.setAttribute("modifyFailedMsg", message);
 		}
 		
 		// 변경한 정보를 다시 조회해서 forward 할 때 다시 보여주도록 전달
 		Member mem = dao.getMember(member.getId());
 		
 		request.setAttribute("member", mem);
-		request.setAttribute("message", message);
 		
 		String path = "/WEB-INF/sample2/member/info.jsp";
 		request.getRequestDispatcher(path).forward(request, response);

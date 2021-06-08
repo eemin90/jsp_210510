@@ -50,19 +50,14 @@
 		<button type="button" id="button1">수정</button>
 		<input type="submit" id="submit1" value="전송" hidden />
 	</form>
-	
-	<c:if test="${not empty message}">
-		<br>
-		<div class="alert alert-danger" role="alert">
-			${message}
-		</div>
-	</c:if>
 </div>
 
 <div class="container">
 	<form id="form2" action="${pageContext.request.contextPath}/sample2/member/remove" method="post">
 		<input type="submit" id="submit2" value="탈퇴" />
 	</form>
+	
+	<s2:message />
 </div>
 </body>
 </html>

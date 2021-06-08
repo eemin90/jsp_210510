@@ -24,12 +24,7 @@
 		<input type="submit" value="로그인" class="form-control" />
 	</form>
 	
-	<c:if test="${not empty message}">
-		<br>
-		<div class="alert alert-danger" role="alert">
-			${message}
-		</div>
-	</c:if>
+	<s2:message />
 </div>
 </body>
 </html>

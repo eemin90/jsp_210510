@@ -40,23 +40,18 @@
 	<h1>회원 가입</h1>
 	<form action="${pageContext.request.contextPath}/sample2/member/signup" method="post">
 		id : <br>
-		<input type="text" name="id" id="input1" class="form-control" /> <button type="button" id="button1" >중복확인</button>
+		<input type="text" name="id" id="input1" class="form-control" required /> <button type="button" id="button1" >중복확인</button>
 		<span id="span1"></span> <br>
 		pw : <br>
-		<input type="text" name="password" class="form-control" /> <br>
+		<input type="text" name="password" class="form-control" required /> <br>
 		name : <br>
-		<input type="text" name="name" class="form-control" /> <br>
+		<input type="text" name="name" class="form-control" required /> <br>
 		birth day : <br>
-		<input type="date" name="birth" class="form-control" /> <br>
+		<input type="date" name="birth" class="form-control" required /> <br>
 		<input type="submit" value="가입" class="form-control" />
 	</form>
 	
-	<c:if test="${not empty message}">
-		<br>
-		<div class="alert alert-danger" role="alert">
-			${message}
-		</div>
-	</c:if>
+	<s2:message />
 </div>
 </body>
 </html>

@@ -47,10 +47,17 @@
 		<input type="text" id="input3" name="name" value="${member.name}" class="form-control" readonly /> <br>
 		birth day : <br>
 		<input type="date" id="input4" name="birth" value="${member.birth}" class="form-control" readonly /> <br>
+		<div class="container">
+			작성한 게시물 : <span>${member.numberOfBoard}</span>개
+			<br>
+			작성한 댓글 : <span>${member.numberOfComment}</span>개
+		</div>
+		<br>
 		<button type="button" id="button1">수정</button>
 		<input type="submit" id="submit1" value="전송" hidden />
 	</form>
 </div>
+
 
 <div class="container">
 	<form id="form2" action="${pageContext.request.contextPath}/sample2/member/remove" method="post">

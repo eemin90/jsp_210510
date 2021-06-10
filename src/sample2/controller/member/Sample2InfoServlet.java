@@ -1,6 +1,7 @@
 package sample2.controller.member;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import sample2.bean.Member;
 import sample2.dao.MemberDao;
+import sample2.service.member.MemberService;
 
 /**
  * Servlet implementation class Sample2InfoServlet
@@ -17,6 +19,8 @@ import sample2.dao.MemberDao;
 @WebServlet("/sample2/member/info")
 public class Sample2InfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private MemberService service;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,6 +30,14 @@ public class Sample2InfoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	super.init();
+    	
+    	service = new MemberService();
+    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -37,7 +49,10 @@ public class Sample2InfoServlet extends HttpServlet {
 		// 세션 정보가 없는 경우 main으로 redirect
 		if (member != null) {
 			MemberDao dao = new MemberDao();
-			Member mem = dao.getMember(member.getId());
+//			Member mem = dao.getMember(member.getId());
+//			Member mem = dao.getMember2(member.getId());
+			
+			Member mem = service.getMember(member.getId());
 			
 			request.setAttribute("member", mem);
 			

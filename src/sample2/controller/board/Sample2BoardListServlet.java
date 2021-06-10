@@ -31,11 +31,29 @@ public class Sample2BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String pageStr = request.getParameter("page");
+		int page = 1;
+		if (pageStr != null) {
+			page = Integer.parseInt(pageStr);
+		}
+		
 		BoardDao dao = new BoardDao();
 //		List<Board> boardList = dao.list();
-		List<BoardDto> boardList = dao.list2();
+//		List<BoardDto> boardList = dao.list2();
+		List<BoardDto> boardList = dao.list3(page);
+		int total = dao.countAll();
+		
+		int cnt = total;
+		
+		if ((cnt % 5) != 0) {
+			cnt = (cnt / 5) + 1;
+		} else {
+			cnt = cnt / 5;
+		}
 		
 		request.setAttribute("boards", boardList);
+		request.setAttribute("totalNum", total);
+		request.setAttribute("pageCnt", cnt);
 		
 		String path = "/WEB-INF/sample2/board/list.jsp";
 		request.getRequestDispatcher(path).forward(request, response);

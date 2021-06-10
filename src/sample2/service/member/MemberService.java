@@ -2,18 +2,22 @@ package sample2.service.member;
 
 import java.sql.Connection;
 
+import sample2.bean.Member;
 import sample2.dao.BoardDao;
+import sample2.dao.CommentDao;
 import sample2.dao.MemberDao;
 import sample2.util.DBConnection;
 
-public class MemberRemoveService {
+public class MemberService {
 	
 	private BoardDao bdao = null;
 	private MemberDao mdao = null;
+	private CommentDao cdao = null;
 	
-	public MemberRemoveService() {
+	public MemberService() {
 		this.bdao = new BoardDao();
 		this.mdao = new MemberDao();
+		this.cdao = new CommentDao();
 	}
 	
 	public void remove(String id) {
@@ -32,5 +36,30 @@ public class MemberRemoveService {
 		} finally {
 			DBConnection.close(con); // 사용 후 connection을 close
 		}
+	}
+
+	public Member getMember(String id) {
+		Connection con = null;
+		
+		try {
+			con = DBConnection.getConnection();
+			
+			Member member = this.mdao.getMember(id, con);
+			
+			int numBoard = this.bdao.getNumberOfBoard(id, con);
+			int numComment = this.cdao.getNumberOfComment(id, con);
+			
+			member.setNumberOfBoard(numBoard);
+			member.setNumberOfComment(numComment);
+			
+			return member;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con);
+		}
+		
+		return null;
 	}
 }

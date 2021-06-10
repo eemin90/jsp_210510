@@ -15,6 +15,7 @@
 <s2:navbar />
 <div class="container">
 	<h1>글 목록</h1>
+	<h6>총 ${totalNum}개의 게시글이 있습니다.</h6>
 	<s2:message />
 	<table class="table table-bordered table-sm">
 		<thead class="thead-light">
@@ -33,6 +34,9 @@
 						<a href="${pageContext.request.contextPath}/sample2/board/detail?id=${board.boardId}">
 							${board.title}
 						</a>
+						<c:if test="${board.numberOfComment != 0}">
+							<span>[${board.numberOfComment}]</span>
+						</c:if>
 					</td>
 					<td>${board.memberName}</td>
 					<td>${board.timeAgo}</td>
@@ -40,6 +44,13 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<nav>
+		<ul class="pagination justify-content-center">
+			<c:forEach var="p" begin="1" end="${pageCnt}">
+				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/sample2/board/list?page=${p}">${p}</a></li>
+			</c:forEach>
+		</ul>
+	</nav>
 </div>
 </body>
 </html>

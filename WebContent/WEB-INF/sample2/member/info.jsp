@@ -39,29 +39,38 @@
 <div class="container">
 	<h1>회원 정보</h1>
 	<form id="form1" action="${pageContext.request.contextPath}/sample2/member/modify" method="post">
-		id : <br>
-		<input type="text" id="input1" name="id" value="${member.id}" class="form-control" readonly /> <br>
-		pw : <br>
-		<input type="text" id="input2" name="password" value="${member.password}" class="form-control" readonly /> <br>
-		name : <br>
-		<input type="text" id="input3" name="name" value="${member.name}" class="form-control" readonly /> <br>
-		birth day : <br>
-		<input type="date" id="input4" name="birth" value="${member.birth}" class="form-control" readonly /> <br>
+		<div class="form-group">
+			<label for="input1">아이디</label>
+			<input type="text" id="input1" name="id" value="${member.id}" class="form-control" readonly>
+		</div>
+		<div class="form-group">
+			<label for="input2">암호</label>
+			<input type="text" id="input2" name="password" value="${member.password}" class="form-control" readonly>
+		</div>
+		<div class="form-group">
+			<label for="input3">이름</label>
+			<input type="text" id="input3" name="name" value="${member.name}" class="form-control" readonly>
+		</div>
+		<div class="form-group">
+			<label for="input4">생년월일</label>
+			<input type="date" id="input4" name="birth" value="${member.birth}" class="form-control" readonly>
+		</div>
 		<div class="container">
 			작성한 게시물 : <span>${member.numberOfBoard}</span>개
 			<br>
 			작성한 댓글 : <span>${member.numberOfComment}</span>개
 		</div>
 		<br>
-		<button type="button" id="button1">수정</button>
-		<input type="submit" id="submit1" value="전송" hidden />
+		<button type="button" id="button1" class="btn btn-outline-secondary">수정</button>
+		<input type="submit" id="submit1" value="전송" class="btn btn-outline-success" hidden>
 	</form>
 </div>
 
 
 <div class="container">
 	<form id="form2" action="${pageContext.request.contextPath}/sample2/member/remove" method="post">
-		<input type="submit" id="submit2" value="탈퇴" />
+		<br>
+		<input type="submit" id="submit2" value="탈퇴" class="btn btn-outline-danger">
 	</form>
 	
 	<s2:message />

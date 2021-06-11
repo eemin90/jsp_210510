@@ -39,16 +39,29 @@
 <div class="container">
 	<h1>회원 가입</h1>
 	<form action="${pageContext.request.contextPath}/sample2/member/signup" method="post">
-		id : <br>
-		<input type="text" name="id" id="input1" class="form-control" required /> <button type="button" id="button1" >중복확인</button>
-		<span id="span1"></span> <br>
-		pw : <br>
-		<input type="text" name="password" class="form-control" required /> <br>
-		name : <br>
-		<input type="text" name="name" class="form-control" required /> <br>
-		birth day : <br>
-		<input type="date" name="birth" class="form-control" required /> <br>
-		<input type="submit" value="가입" class="form-control" />
+		<div class="form-group">
+			<label for="input1">아이디 : </label>
+			<div class="input-group mb-3">
+				<input type="text" id="input1" name="id" class="form-control" required>
+					<div class="input-group-append">
+						<button type="button" id="button1" class="btn btn-outline-secondary">중복확인</button>
+					</div>
+				</div>
+			<span class="form-text text-muted" id="span1"></span>
+		</div>
+		<div class="form-group">
+			<label for="input2">암호 : </label>
+			<input type="text" id="input2" name="password" class="form-control" required> <br>
+		</div>
+		<div class="form-group">
+			<label for="input3">이름 : </label>
+			<input type="text" id="input3" name="name" class="form-control" required> <br>
+		</div>
+		<div class="form-group">
+			<label for="input4">생년월일 : </label>
+			<input type="date" id="input4" name="birth" class="form-control" required> <br>
+		</div>
+		<input type="submit" value="가입" class="btn btn-primary">
 	</form>
 	
 	<s2:message />

@@ -17,11 +17,15 @@
 	
 	<h1>로그인</h1>
 	<form action="${pageContext.request.contextPath}/sample2/member/login" method="post">
-		id <br>
-		<input type="text" name="id" class="form-control" /> <br>
-		pw <br>
-		<input type="text" name="password" class="form-control" /> <br>
-		<input type="submit" value="로그인" class="form-control" />
+		<div class="form-group">
+			<label for="input1">아이디</label>
+			<input type="text" id="input1" name="id" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="input2">암호</label>
+			<input type="text" id="input2" name="password" class="form-control">
+		</div>
+		<input type="submit" value="로그인" class="btn btn-primary">
 	</form>
 	
 	<s2:message />

@@ -14,14 +14,22 @@
 <body>
 <s2:navbar />
 <div class="container">
+<div class="row">
+<div class="col-8 mx-auto">
 	<h1>글 작성</h1>
 	<form action="${pageContext.request.contextPath}/sample2/board/write" method="post">
-		제목 : <br>
-		<input type="text" name="title" id="input" required /> <br>
-		본문 : <br>
-		<textarea name="body" id="textarea1"></textarea> <br>
-		<input type="submit" value="작성" />
+		<div class="form-group">
+			<label for="input1">제목 : </label>
+			<input type="text" name="title" id="input1" class="form-control" required>
+		</div>
+		<div class="form-group">
+			<label for="textarea1">본문 : </label>
+			<textarea name="body" id="textarea1" class="form-control" rows="10"></textarea>
+		</div>
+		<input type="submit" value="작성" class="btn btn-primary">
 	</form>
+</div>
+</div>
 </div>
 </body>
 </html>

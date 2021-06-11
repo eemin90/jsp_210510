@@ -19,11 +19,11 @@
 		<thead class="thead-light">
 			<tr>
 				<th>#</th>
-				<th>ID</th>
-				<th>PW</th>
-				<th>NAME</th>
-				<th>BIRTH</th>
-				<th>INSERTED</th>
+				<th>아이디</th>
+				<th>암호</th>
+				<th>이름</th>
+				<th>생년월일</th>
+				<th>가입일자</th>
 			</tr>
 		</thead>
 		<tbody>

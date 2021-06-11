@@ -66,7 +66,7 @@ public class Sample2ModifyServlet extends HttpServlet {
 		}
 		
 		// 변경한 정보를 다시 조회해서 forward 할 때 다시 보여주도록 전달
-		Member mem = dao.getMember(member.getId());
+		Member mem = dao.getMember2(member.getId());
 		
 		request.setAttribute("member", mem);
 		

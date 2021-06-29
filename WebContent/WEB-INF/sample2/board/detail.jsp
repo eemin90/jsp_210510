@@ -18,13 +18,13 @@
 	
 	<form id="form1" action="${pageContext.request.contextPath}/sample2/board/modify" method="post">
 		제목 : <br>
-		<input type="text" id="input1" name="title" value="${board.title}" readonly required /> <br>
+		<input type="text" id="input1" name="title" value="${board.title}" class="form-control" readonly required /> <br>
 		본문 : <br> 
-		<textarea rows="5" id="textarea1" name="body" readonly><c:out value="${board.body}" /></textarea> <br>
+		<textarea rows="5" id="textarea1" name="body" class="form-control" readonly><c:out value="${board.body}" /></textarea> <br>
 		작성자 : <br> 
-		<input type="text" value="${board.memberName}" readonly /> <br>
+		<input type="text" value="${board.memberName}" class="form-control" readonly /> <br>
 		작성시간 : <br> 
-		<input type="text" value="${board.timeAgo}" readonly /> <br>
+		<input type="text" value="${board.timeAgo}" class="form-control" readonly /> <br>
 		
 		<c:if test="${sessionScope.userLogined.id == board.memberId}">
 			<script>
@@ -46,9 +46,9 @@
 		
 			<br>
 			<input type="number" name="boardId" value="${board.boardId}" hidden />
-			<button type="button" id="button1">수정</button>
-			<input type="submit" id="submit1" value="전송" hidden />
-			<input type="submit" id="submit2" value="삭제" hidden />
+			<button type="button" id="button1" class="btn btn-outline-secondary">수정</button>
+			<input type="submit" id="submit1" value="전송" class="btn btn-outline-success" hidden />
+			<input type="submit" id="submit2" value="삭제" class="btn btn-outline-danger" hidden />
 		</c:if>
 	</form>
 	
@@ -58,64 +58,63 @@
 <c:if test="${not empty sessionScope.userLogined}">
 	<div class="container mt-5">
 		<form action="${pageContext.request.contextPath}/sample2/comment/add" method="post">
-			<textarea name="comment"></textarea>
+			<textarea name="comment" class="form-control"></textarea>
 			<br>
-			<input name="memberId" value="${sessionScope.userLogined.id}" readonly />
-			<br>
-			<input name="boardId" value="${board.boardId}" readonly />
-			<br>
-			<input type="submit" value="댓글 작성" />
+			<input type="submit" value="댓글 작성" class="btn btn-outline-success" />
+			<input name="memberId" value="${sessionScope.userLogined.id}" readonly hidden />
+			<input name="boardId" value="${board.boardId}" readonly hidden />
 		</form>
 	</div>
 </c:if>
 	
-	<div class="container mt-5">
-		<c:forEach items="${comments}" var="comment">
-			<script>
-				$(document).ready(function() {
-					var $form = $('#' + 'comment${comment.id}Form');
-					var $modifyButton = $('#' + 'comment${comment.id}Button1');
-					var $deleteButton = $('#' + 'comment${comment.id}Button2');
-					var $submitButton = $('#' + 'comment${comment.id}Button3');
-					
-					$modifyButton.click(function(e) {
-						e.preventDefault();
-						$form.find("textarea").removeAttr("readonly");
-						$(this).attr("hidden", "hidden"); // this(여기서는 $modifyButton)의 attr값 중 hidden의 value를 hidden으로 설정(hidden이 없었으니 새로 생김(hidden="hidden"))
-						$submitButton.removeAttr("hidden");
-					});
-					
-					$submitButton.click(function() {
-						alert("수정 되었습니다.");
-					});
-					
-					$deleteButton.click(function(e) {
-						e.preventDefault();
-						
-						if (confirm("삭제 하시겠습니까?")) {
-							$form.attr("action", "${pageContext.request.contextPath}/sample2/comment/remove");
-							alert("삭제 되었습니다.");
-							$form.submit();
-						}
-					});
-				});
-			</script>
-			<div>
-				<form id="comment${comment.id}Form" action="${pageContext.request.contextPath}/sample2/comment/modify" method="post">
-					<input name="commentId" value="${comment.id}" hidden />
-					<input name="boardId" value="${board.boardId}" hidden />
-					<textarea name="comment" readonly>${comment.comment}</textarea>
-					<span>${comment.memberName}</span>
-					<span>${comment.timeAgo}</span>
+<div class="container mt-5">
+	<h4>댓글</h4>
+	<c:forEach items="${comments}" var="comment">
+		<script>
+			$(document).ready(function() {
+				var $form = $('#' + 'comment${comment.id}Form');
+				var $modifyButton = $('#' + 'comment${comment.id}Button1');
+				var $deleteButton = $('#' + 'comment${comment.id}Button2');
+				var $submitButton = $('#' + 'comment${comment.id}Button3');
 				
-					<c:if test="${sessionScope.userLogined.id == comment.memberId}">
-						<button id="comment${comment.id}Button1">수정</button>
-						<button id="comment${comment.id}Button3" hidden>전송</button>
-						<button id="comment${comment.id}Button2">삭제</button>
-					</c:if>
-				</form>
-			</div>
-		</c:forEach>
-	</div>
+				$modifyButton.click(function(e) {
+					e.preventDefault();
+					$form.find("textarea").removeAttr("readonly");
+					$(this).attr("hidden", "hidden"); // this(여기서는 $modifyButton)의 attr값 중 hidden의 value를 hidden으로 설정(hidden이 없었으니 새로 생김(hidden="hidden"))
+					$submitButton.removeAttr("hidden");
+				});
+				
+				$submitButton.click(function() {
+					alert("수정 되었습니다.");
+				});
+				
+				$deleteButton.click(function(e) {
+					e.preventDefault();
+					
+					if (confirm("삭제 하시겠습니까?")) {
+						$form.attr("action", "${pageContext.request.contextPath}/sample2/comment/remove");
+						alert("삭제 되었습니다.");
+						$form.submit();
+					}
+				});
+			});
+		</script>
+		<div class="mt-4">
+			<form id="comment${comment.id}Form" action="${pageContext.request.contextPath}/sample2/comment/modify" method="post">
+				<input name="commentId" value="${comment.id}" hidden />
+				<input name="boardId" value="${board.boardId}" hidden />
+				<textarea name="comment" class="form-control" rows="2" readonly>${comment.comment}</textarea>
+				<span>${comment.memberName}</span>
+				<span>${comment.timeAgo}</span>
+			
+				<c:if test="${sessionScope.userLogined.id == comment.memberId}">
+					<button id="comment${comment.id}Button1" class="btn btn-outline-secondary">수정</button>
+					<button id="comment${comment.id}Button3" class="btn btn-outline-success" hidden>전송</button>
+					<button id="comment${comment.id}Button2" class="btn btn-outline-danger">삭제</button>
+				</c:if>
+			</form>
+		</div>
+	</c:forEach>
+</div>
 </body>
 </html>
